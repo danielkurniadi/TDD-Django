@@ -1,7 +1,10 @@
 from django.test import TestCase
+from django.urls import resolve 
+from lists.views import home_page
 
 # Create your tests here.
-class SmokeTests(TestCase):
-    def test_basicmath(self):
-        self.assertEqual(1+1, 11) #goblok
-        
+class HomePageTest(TestCase):
+
+    def test_resolveRootUrl(self):
+        found = resolve('/')
+        self.assertEqual(found.func, home_page)
